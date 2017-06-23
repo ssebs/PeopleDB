@@ -2,7 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="site.css    ">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
 	<h2>Modification Results:</h2>
