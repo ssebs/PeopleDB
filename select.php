@@ -33,6 +33,8 @@ if($result->num_rows > 0) {
 	echo "<hr>";
 	echo "<h5 class='small-margin'>$result->num_rows results found</h5>";
 	echo "<hr><br>";
+
+	echo "<p>Idea for this: Output a form instead of this basic html, with the values defaulted in and editable. action=modify.php</p>";
 	while($row = $result->fetch_assoc()) {
 		echo "<em>User: </em><strong>" . $row['user'] . "</strong>";
 		echo "<br>";
