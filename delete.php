@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="site.css    ">
+	<meta http-equiv="refresh" content="3,url=http://ssebs-centos/">
 
 </head>
 <body>
