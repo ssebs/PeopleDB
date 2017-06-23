@@ -24,9 +24,9 @@ if($_user === "") {
 	$_user = "%";
 }
 $_user = str_replace("*","%", $_user);
+$_user = str_replace("%","", $_user);
 
-
-$sql = "SELECT * FROM Users WHERE user LIKE '$_user';";
+$sql = "SELECT * FROM Users WHERE user LIKE '%$_user%';";
 $result = $conn->query($sql);
 
 if($result->num_rows > 0) {
