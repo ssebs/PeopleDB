@@ -19,6 +19,8 @@ h1 {
 <body>
 	<h1>People DB</h1>
 	<p class="text-center">Search, Create, Modify, and Delete Users.</p>
+	<br>
+	<p><strong>TODO:</strong> add ID's to output of Search</p>
 	<hr>
 
 	<form action="select.php" method="post">
