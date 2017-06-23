@@ -20,7 +20,7 @@ h1 {
 	<h1>People DB</h1>
 	<p class="text-center">Search, Create, Modify, and Delete Users.</p>
 	<br>
-	<p><strong>TODO:</strong> add ID's to output of Search</p>
+	<p><strong>TODO:</strong> add ID's to output of Search. Also, add modify to custom searches with 1 result.</p>
 	<hr>
 
 	<form action="select.php" method="post">
