@@ -3,9 +3,6 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="site.css    ">
 <style>
-.inline {
-	display: inline;	
-}
 .small-margin {
 	margin: 2px auto;
 }
@@ -15,6 +12,7 @@
 <body>
 	<h2>Search Results:</h2>
 	<hr>
+
 
 <?php
 require("dbconn.php");
@@ -48,21 +46,6 @@ if($result->num_rows > 0) {
 }
 ?>
 
-	<form action="modify.php" method="post">
-		<fieldset>
-			<legend>Need to modify something?</legend>
-			<p><label>User? <input type="text" name="user"></label></p>
-	
-			<p class="small-margin">Field to modify:</p>
-			<label class="inline"><input type="radio" name="field" value="user">User</label>
-			<label class="inline"><input type="radio" name="field" value="first">First</label>
-			<label class="inline"><input type="radio" name="field" value="last">Last</label>
-			<label class="inline"><input type="radio" name="field" value="email">Email</label>
-			
-			<p><label>Value? (what to change it to) <input type="text" name="value"></label></p>
-			<input type="submit">
-		</fieldset>
-	</form>
 
 	<p><a href="..">Go Back...</a></p>
 
