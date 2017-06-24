@@ -18,15 +18,15 @@
 <?php
 require("dbconn.php");
 
-$_user = $_POST['name'];
+$_searchquery = $_POST['name'];
 
-if($_user === "") {
-	$_user = "%";
+if($_searchquery === "") {
+	$_searchquery = "%";
 }
-$_user = str_replace("*","%", $_user);
-$_user = str_replace("%","", $_user);
+$_searchquery = str_replace("*","%", $_searchquery);
+$_searchquery = str_replace("%","", $_searchquery);
 
-$sql = "SELECT * FROM Users WHERE user LIKE '%$_user%';";
+$sql = ' select * from Users Where(first LIKE "%' . $_searchquery . '%" OR last LIKE "%' . $_searchquery . '%" OR user LIKE "%' . $_searchquery . '%" OR email LIKE "%' . $_searchquery . '%");';
 $result = $conn->query($sql);
 
 if($result->num_rows > 0) {
