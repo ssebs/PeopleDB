@@ -27,6 +27,8 @@ print "New Users:\n"
 for nu in newusers:
 	print "Creating account for: " + nu
 	# user must be in %wheel group and have NOPASSWD:ALL turned on
-	cmd = "sudo useradd -m -p SsebsP@ss" + nu
-	os.system("ssh -tt ssebs-nis '" + cmd + "'")
-
+	cmd = "sudo useradd -m  " + nu + ";echo 'SsebsP@ss' | passwd " + nu + " --stdin" 
+	os.system("ssh ssebs-nis '" + cmd + "'")
+print "Users created.\nMaking NIS..."
+cmd2 = "cd /var/yp; make all"
+os.system("ssh ssebs-nis '" + cmd2 + "'")
