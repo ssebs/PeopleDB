@@ -30,6 +30,7 @@ for row in cur.fetchall():
 	
 db.close()
 
+#TODO: Add 'Disabled' Column
 with open('people.csv','wb') as csvfile:
 	writer = csv.writer(csvfile, delimiter=",", 
 		quotechar='|', quoting=csv.QUOTE_MINIMAL)
