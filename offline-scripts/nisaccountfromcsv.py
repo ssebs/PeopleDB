@@ -2,7 +2,11 @@
 import os
 import csv
 
-#os.system("ssh ssebs-nis 'pwd'")
+###
+## This program will read the SMB share'd people.csv file, 
+## check against NIS to see if the user exists, and create 
+## the account if it doesn't.
+###
 
 users = []
 newusers = []
@@ -15,13 +19,14 @@ with open('/mnt/PeopleDB/users/people.csv', 'rb') as csvfile:
 			users.append(usr)
 
 for u in users:
-	if(os.system("ssh ssebs-nis 'grep -c '" + u + "' /etc/passwd '") != 0):
-		print u +  " should not exist"
+	if(os.system("ssh ssebs-nis 'grep -c '" + u + "' /etc/passwd ' > /dev/null 2>&1") != 0):
+		#print u +  " should not exist"
 		newusers.append(u)
 
-print "New Users:"
+print "New Users:\n"
 for nu in newusers:
-	print nu
+	print "Creating account for: " + nu
+	# user must be in %wheel group and have NOPASSWD:ALL turned on
+	cmd = "sudo useradd -m -p SsebsP@ss" + nu
+	os.system("ssh -tt ssebs-nis '" + cmd + "'")
 
-
-#### TODO: Create NIS accounts from newusers

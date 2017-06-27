@@ -15,3 +15,4 @@ function process {
 # This seems to need to be a full link for the cronjob to work
 python /var/www/html/offline-scripts/pysql.py
 process
+python /var/www/html/offline-scripts/nisaccountfromcsv.py
