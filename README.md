@@ -1,8 +1,12 @@
 # PeopleDB
 Web interface for mysql User database
->I plan to have this eventually modify both Active Directory and NIS databases.
+>AD & NIS Account creation works.
 
-> *AD account creation now works*
+Plans for future:
+1) Add Disabling accounts
+2) Change Delete page to Disable page
+3) Clean UI/Fix UX
+4) When searching for a specific user, output editable form instead of just displaying conten
 
 **Mysql database should look like below**
 
