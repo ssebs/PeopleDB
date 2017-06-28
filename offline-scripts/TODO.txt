@@ -1,0 +1,7 @@
+1) Fix database, add source control, revision history
+2) fix NIS account creation. 
+3) use ansible for NIS
+4) see if ansible will work with Windows
+5) add better tutorials
+6) php form output when user is searched
+7) add searchable history for user, possibly as a "view history" on search page for specific user."

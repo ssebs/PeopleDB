@@ -8,6 +8,8 @@ import csv
 ## the account if it doesn't.
 ###
 
+#####  CHANGE THIS TO ANSIBLE, SSH ROOT KEYS AND os.system SHOULD NOT BE USED
+
 users = []
 newusers = []
 
