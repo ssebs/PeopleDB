@@ -1,0 +1,28 @@
+---
+- hosts: nis-servers
+  become: yes
+  vars_files:
+    - users.yml
+  tasks:
+    - name: "Create users from users.yml"
+      user:
+        name: "{{ item.name }}"
+        state: present
+        comment: ""
+        password: "$6$rounds=656000$x62DhqXy2cehUscT$iznGd2ZOU4jsTJN2U2vg9woc0KHnOqm6S5lJdDv11W6QYSvSy2mSRLHGbn6I1Upv8mXwaMQg9BYCQIlZRimoI1"
+        update_password: on_create
+        createhome: yes
+        groups: "{{ item.groups }}"
+      with_items: "{{ users }}"
+
+    - name: "Make NIS passwd file"
+      command: make 
+      become: yes
+      args:
+        chdir: /var/yp/
+
+    - name: "Make NIS passwd file pt2"
+      command: make all
+      become: yes
+      args:
+        chdir: /var/yp/

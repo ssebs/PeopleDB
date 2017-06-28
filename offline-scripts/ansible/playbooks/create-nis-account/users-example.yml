@@ -1,0 +1,5 @@
+users:
+  - name: tuser2
+    groups: users
+  - name: tuser3
+    groups: users

@@ -1,0 +1,7 @@
+users:
+  - name: tuser2
+    groups: users
+  - name: tuser3
+    groups: users
+  - name: syee
+    groups: users

@@ -1,0 +1,10 @@
+[all]
+ssebs-nis
+ssebs-nc
+
+[nis-servers]
+ssebs-nis
+
+[nis-clients]
+ssebs-nc
+
