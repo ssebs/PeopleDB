@@ -1,7 +1,5 @@
 ---
 - users:
-   - name: ssafari
-     groups: users
    - name: tuser
      groups: users
    - name: juser
@@ -11,4 +9,6 @@
    - name: msafari
      groups: users
    - name: syee
+     groups: users
+   - name: ysafari
      groups: users
