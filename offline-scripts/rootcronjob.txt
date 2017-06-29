@@ -1,1 +1,1 @@
-* * * * * /var/www/html/offline-scripts/sql2smbcsv.sh
+*/2 * * * * /var/www/html/offline-scripts/sql2smb.sh

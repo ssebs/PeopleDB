@@ -1,1 +1,7 @@
-### The files in offline-scripts/ should be hidden from apache, and be setup with a cronjob. 
+## To use this: ##
+* users.yml should contain new NIS user accounts to make
+* create-nis-accounts.yml playbook will use users.yml file to create accounts on [nis-servers]
+
+
+### TODO ###
+* Replace createnisaccounts.py with this ansible script 

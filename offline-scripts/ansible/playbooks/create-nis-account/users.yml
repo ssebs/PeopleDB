@@ -1,7 +1,14 @@
-users:
-  - name: tuser2
-    groups: users
-  - name: tuser3
-    groups: users
-  - name: syee
-    groups: users
+---
+- users:
+   - name: ssafari
+     groups: users
+   - name: tuser
+     groups: users
+   - name: juser
+     groups: users
+   - name: tdickerson
+     groups: users
+   - name: msafari
+     groups: users
+   - name: syee
+     groups: users

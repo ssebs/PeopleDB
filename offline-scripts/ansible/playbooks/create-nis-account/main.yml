@@ -13,6 +13,7 @@
         update_password: on_create
         createhome: yes
         groups: "{{ item.groups }}"
+        append: yes
       with_items: "{{ users }}"
 
     - name: "Make NIS passwd file"
