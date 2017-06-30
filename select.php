@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="site.css    ">
+	<link rel="stylesheet" type="text/css" href="site.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -12,71 +12,60 @@
 </style>
 </head>
 <body>
-	<h2>Search Results:</h2>
 
 
 <?php
 require("dbconn.php");
 
-$_searchquery = $_POST['name'];
-
+if(@$_POST['name'] == NULL) {
+	$_searchquery = $_SERVER['QUERY_STRING'];
+} else {
+	$_searchquery = $_POST['name'];
+}
 if($_searchquery === "") {
 	$_searchquery = "%";
 }
+
 $_searchquery = str_replace("*","%", $_searchquery);
 $_searchquery = str_replace("%","", $_searchquery);
 
-$sql = ' select * from Users Where(first LIKE "%' . $_searchquery . '%" OR last LIKE "%' . $_searchquery . '%" OR user LIKE "%' . $_searchquery . '%" OR email LIKE "%' . $_searchquery . '%");';
+$sql = ' select * from Users WHERE(id="'. $_searchquery . '" OR first LIKE "%' . $_searchquery . '%" OR last LIKE "%' . $_searchquery . '%" OR user LIKE "%' . $_searchquery . '%" OR email LIKE "%' . $_searchquery . '%");';
 $result = $conn->query($sql);
 
 if($result->num_rows > 0) {
+	echo "<h2>Search Results:</h2>";
 	echo "<hr>";
 	echo "<h5 class='small-margin'>$result->num_rows results found</h5>";
 	echo "<hr><br>";
-
-	echo "<p>Idea for this: Output a form instead of this basic html, with the values defaulted in and editable. action=modify.php</p>";
+	
 	while($row = $result->fetch_assoc()) {
-		echo "<em>User: </em><strong>" . $row['user'] . "</strong>";
-		echo "<br>";
-		echo "<em>First: </em><strong>" . $row['first'] . "</strong>";
-		echo "<br>";
-		echo "<em>Last: </em><strong>" . $row['last'] . "</strong>";
-		echo "<br>";
-		echo "<em>Email: </em><strong>" . $row['email'] . "</strong>";
-		echo "<br>";
+
+
+		if($result->num_rows == 1) {
+			echo"
+<form action='modify.php' method='post'>
+	<fieldset>
+		<legend>User: " . $row['user'] .  " (id: ".$row['id'].")</legend>
+		<input type='hidden' name='id' value='".$row['id']."'
+		<label class='inline'>Username: <input type='text' name='username' value='".$row['user']."'></label>
+		<label class='inline'>First: <input type='text' name='firstname' value='".$row['first']."'></label>
+		<label class='inline'>Last: <input type='text' name='lastname' value='".$row['last']."'></label>
+		<label class='inline'>Email: <input type='text' name='emailaddr' value='".$row['email']."'></label>
+		<input type='submit'>
+	</fieldset>
+</form>
+			";
+		} else {
+		## TODO: Make this into a table instead of just printing it out. ##	
+		echo " - ";
+		echo $row['user']  . ", ";
+		echo $row['first'] . ", ";
+		echo $row['last']  . ", ";
+		echo $row['email'] . ", ";
+		echo "<a href='select.php?" . $row['id'] ."'> | &#9;Modify User...</a>";
 		echo "<hr>";
-
-	if($result->num_rows == 1) {
-		echo '
-<form action="modify.php" method="post">
-	<fieldset>
-		<legend>Need to modify something?</legend>
-		';
-		echo '<p><label>User? <input type="text" name="user" value=' . $row["user"] . '></label></p>
-		
-		<p class="small-margin">Field to modify:</p>
-		<label class="inline"><input type="radio" name="field" value="user">User</label>
-		<label class="inline"><input type="radio" name="field" value="first">First</label>
-		<label class="inline"><input type="radio" name="field" value="last">Last</label>
-		<label class="inline"><input type="radio" name="field" value="email">Email</label>
-		
-		<p><label>Value? (what to change it to) <input type="text" name="value"></label></p>
-		<input type="submit">
-	</fieldset>
-</form>
-
-<form action="delete.php" method="post">
-	<fieldset>
-		<legend>Delete User</legend>
-';
-		echo '
-		<p><label>	Username? <input type="text" name="username" value="'. $row["user"] . '"></label></p>
-		<input type="submit">
-	</fieldset>
-</form>
-
-			';
-	}
+	
+		}
 
 	}
 } else {

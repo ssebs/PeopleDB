@@ -1,21 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="site.css    ">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<body>
-	<h2>Modification Results:</h2>
-
 <?php
 require("dbconn.php");
 
-$_field = $_POST['field'];
-$_value = $_POST['value'];
-$_user  = $_POST['user'];
+$_id  = $_POST['id'];
+$_user  = $_POST['username'];
+$_first  = $_POST['firstname'];
+$_last  = $_POST['lastname'];
+$_email  = $_POST['emailaddr'];
 
-$sql = "UPDATE Users SET $_field='$_value' WHERE user = '$_user';";
+$_datetime = date('Y-m-d H:i:s');
+$_file = '_UsersChangeLog_';
+$_outstr = $_datetime . "," . $_id . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
+
+file_put_contents($_file, $_outstr, FILE_APPEND);
+
+
+$sql = "UPDATE Users SET 
+	user='$_user',
+	first='$_first',
+	last='$_last',
+	email='$_email'
+
+WHERE id = '$_id';";
 
 
 $result = $conn->query($sql);
@@ -24,9 +29,9 @@ if ($result === TRUE) {
 } else {
 	echo "ERROR: " . $conn->error;
 }
-?>
-	
-	<p><a href="..">Go Back...</a></p>
 
-</body>
-</html>
+echo "<script>
+alert('Successfully updated info.');
+window.location.href='select.php?" . $_user ."';
+</script>";
+?>
