@@ -20,7 +20,6 @@ h1 {
 <body>
 	<h1>People DB</h1>
 	<p class="text-center">Search, Create, Modify, and Disable Users.</p>
-	<br>
 
 	<form action="select.php" method="post">
 		<fieldset>		
