@@ -22,24 +22,20 @@ alert('User not created! Enter in the needed info!');
 window.location.href='index.php';
 </script>";
 	
-}
-
-
-$sql = "INSERT INTO Users(first, last, user, email) VALUES('$_first','$_last','$_user','$_email');";
-
-
-$result = $conn->query($sql);
-if ($result === TRUE) {
-	echo "<script>
-alert('Successfully created user..');
-window.location.href='select.php?" . $_user ."';
-</script>";
 } else {
-	echo "ERROR: " . $conn->error;
+	$sql = "INSERT INTO Users(first, last, user, email) VALUES('$_first','$_last','$_user','$_email');";
+	
+	$result = $conn->query($sql);
+	if ($result === TRUE) {
+		echo "<script>
+	alert('Successfully created user..');
+	window.location.href='select.php?" . $_user ."';
+	</script>";
+	} else {
+		echo "ERROR: " . $conn->error;
+	}
+	
 }
-
-
-
 ?>
 
 	<p><a href="..">Go Back...</a></p>

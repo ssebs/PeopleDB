@@ -55,6 +55,15 @@ if($result->num_rows > 0) {
 	</fieldset>
 </form>
 			";
+			echo '
+	<form action="delete.php" method="post">
+		<fieldset>
+			<legend>Delete User</legend>
+			<p><label>Username?  <input type="text" name="username"></label></p>
+			<input type="submit">
+		</fieldset>
+	</form>
+			';
 		} else {
 		## TODO: Make this into a table instead of just printing it out. ##	
 		echo " - ";
