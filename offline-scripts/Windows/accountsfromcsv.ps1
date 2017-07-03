@@ -7,20 +7,27 @@ foreach ($person in $peoplecsv) {
     $email = $person.Email
     $name = "$first $last"
 
-    $user = Get-ADUser -LDAPFilter "(sAMAccountName=$username)"
+    $user = Get-ADUser -LDAPFilter "(sAMAccountName=$username)" -Properties EmailAddress,DisplayName
 
     If($user -ne $Null) {
-        echo "User: $username alreaady created, modifying..."
-        # Add where userid =, and a compare to see if vales are different.
+        echo "User: $username alreaady created."
 
-        Set-ADUser  -Identity $user `
-                    -DisplayName $name `
-                    -Surname $last `
-                    -GivenName $first `
-                    -SamAccountName "$username" `
-                    -UserPrincipalName "$email" `
-                    -EmailAddress $email
-        
+        If($user.Surname -eq $last -and $user.GivenName -eq $first -and $user.EmailAddress `
+            -eq $email -and $user.DisplayName -eq $name) 
+        {
+            echo " "
+        }Else 
+        {
+            echo "Updating user: $username"
+            Set-ADUser -Identity $user `
+                       -DisplayName $name `
+                       -Surname $last `
+                       -GivenName $first `
+                       -SamAccountName "$username" `
+                       -UserPrincipalName "$email" `
+                       -EmailAddress $email
+        }
+
     }Else {
         echo "Creating account for $username"
         
