@@ -28,9 +28,17 @@ window.location.href='index.php';
 	$result = $conn->query($sql);
 	if ($result === TRUE) {
 		echo "<script>
-	alert('Successfully created user..');
+	alert('Successfully created user.');
 	window.location.href='select.php?" . $_user ."';
 	</script>";
+
+		date_default_timezone_set("America/Los_Angeles");
+		$_datetime = date('Y-m-d H:i:s');
+		$_file = '_UsersChangeLog_';
+		$_outstr = $_datetime . "," . $_id . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
+		
+		file_put_contents($_file, $_outstr, FILE_APPEND);
+
 	} else {
 		echo "ERROR: " . $conn->error;
 	}

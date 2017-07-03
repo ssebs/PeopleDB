@@ -7,6 +7,7 @@ $_first  = $_POST['firstname'];
 $_last  = $_POST['lastname'];
 $_email  = $_POST['emailaddr'];
 
+date_default_timezone_set("America/Los_Angeles");
 $_datetime = date('Y-m-d H:i:s');
 $_file = '_UsersChangeLog_';
 $_outstr = $_datetime . "," . $_id . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
