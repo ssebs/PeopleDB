@@ -67,7 +67,7 @@ if($result->num_rows > 0) {
 		} else {
 		## TODO: Make this into a table instead of just printing it out. ##	
 		echo " - ";
-		echo $row['user']  . ", ";
+		echo "<strong>" .  $row['user']  . "</strong>, ";
 		echo $row['first'] . ", ";
 		echo $row['last']  . ", ";
 		echo $row['email'] . ", ";
