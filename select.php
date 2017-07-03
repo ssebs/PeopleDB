@@ -72,7 +72,7 @@ if($result->num_rows > 0) {
 		echo $row['last']  . ", ";
 		echo $row['email'] . ", ";
 		echo "<a href='select.php?" . $row['id'] ."'> | &#9;Modify User...</a>";
-		echo "<hr>";
+		echo "<br>";
 	
 		}
 
