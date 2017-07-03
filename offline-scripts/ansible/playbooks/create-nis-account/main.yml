@@ -5,6 +5,7 @@
     - users.yml
   tasks:
     - name: "Create users from users.yml"
+# add uid from database, autoincrement feature in mysql, starting at ~7000 
       user:
         name: "{{ item.name }}"
         state: present

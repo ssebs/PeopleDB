@@ -23,7 +23,7 @@ window.location.href='index.php';
 </script>";
 	
 } else {
-	$sql = "INSERT INTO Users(first, last, user, email) VALUES('$_first','$_last','$_user','$_email');";
+	$sql = "INSERT INTO Users(first, last, user, email, disabled) VALUES('$_first','$_last','$_user','$_email', FALSE);";
 	
 	$result = $conn->query($sql);
 	if ($result === TRUE) {

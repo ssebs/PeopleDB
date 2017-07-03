@@ -1,18 +1,4 @@
 ---
 - users:
-   - name: tuser
-     groups: users
-   - name: juser
-     groups: users
-   - name: tdickerson
-     groups: users
    - name: msafari
-     groups: users
-   - name: syee
-     groups: users
-   - name: ysafari
-     groups: users
-   - name: mccaskey
-     groups: users
-   - name: juser2
      groups: users

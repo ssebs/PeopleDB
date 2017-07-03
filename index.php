@@ -49,6 +49,13 @@ h1 {
 		</fieldset>
 	</form>
 	
+	<form action="_UsersChangeLog_" method="post">
+		<fieldset>
+			<legend>PeopleDB Log</legend>
+			<input type="submit" value="View Log">
+		</fieldset>
+	</form>
+	
 
 </body>
 </html>

@@ -13,7 +13,9 @@ require("dbconn.php");
 
 $_user = $_POST['username'];
 
-
+#
+# Change this to disable
+#
 $sql = "DELETE FROM Users WHERE user = '$_user';";
 
 
