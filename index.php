@@ -45,6 +45,7 @@ h1 {
 		<fieldset>
 			<legend>Delete User</legend>
 			<p><label>	Username? <input type="text" name="username"></label></p>
+			<p><label>	User ID? <input type="text" name="userid"></label></p>
 			<input type="submit">
 		</fieldset>
 	</form>

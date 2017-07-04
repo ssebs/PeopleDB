@@ -1,7 +1,7 @@
 <?php
 require("dbconn.php");
 
-$_id  = $_POST['id'];
+$_uid  = $_POST['uid'];
 $_user  = $_POST['username'];
 $_first  = $_POST['firstname'];
 $_last  = $_POST['lastname'];
@@ -10,7 +10,7 @@ $_email  = $_POST['emailaddr'];
 date_default_timezone_set("America/Los_Angeles");
 $_datetime = date('Y-m-d H:i:s');
 $_file = '_UsersChangeLog_';
-$_outstr = $_datetime . "," . $_id . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
+$_outstr = $_datetime . "," . $_uid . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
 
 file_put_contents($_file, $_outstr, FILE_APPEND);
 
@@ -21,7 +21,7 @@ $sql = "UPDATE Users SET
 	last='$_last',
 	email='$_email'
 
-WHERE id = '$_id';";
+WHERE uid = '$_uid';";
 
 
 $result = $conn->query($sql);

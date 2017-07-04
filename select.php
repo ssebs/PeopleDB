@@ -29,7 +29,7 @@ if($_searchquery === "") {
 $_searchquery = str_replace("*","%", $_searchquery);
 $_searchquery = str_replace("%","", $_searchquery);
 
-$sql = ' select * from Users WHERE(id="'. $_searchquery . '" OR first LIKE "%' . $_searchquery . '%" OR last LIKE "%' . $_searchquery . '%" OR user LIKE "%' . $_searchquery . '%" OR email LIKE "%' . $_searchquery . '%");';
+$sql = ' select * from Users WHERE(uid="'. $_searchquery . '" OR first LIKE "%' . $_searchquery . '%" OR last LIKE "%' . $_searchquery . '%" OR user LIKE "%' . $_searchquery . '%" OR email LIKE "%' . $_searchquery . '%");';
 $result = $conn->query($sql);
 
 if($result->num_rows > 0) {
@@ -39,14 +39,17 @@ if($result->num_rows > 0) {
 	echo "<hr><br>";
 	
 	while($row = $result->fetch_assoc()) {
-
+		if($row['disabled'] == 1) {
+			#echo $row['user'] . " is disabled";
+			continue;
+		}
 
 		if($result->num_rows == 1) {
 			echo"
 <form action='modify.php' method='post'>
 	<fieldset>
-		<legend>User: " . $row['user'] .  " (id: ".$row['id'].")</legend>
-		<input type='hidden' name='id' value='".$row['id']."'
+		<legend>User: " . $row['user'] .  " (uid: ".$row['uid'].")</legend>
+		<input type='hidden' name='uid' value='".$row['uid']."'
 		<label class='inline'>Username: <input type='text' name='username' value='".$row['user']."'></label>
 		<label class='inline'>First: <input type='text' name='firstname' value='".$row['first']."'></label>
 		<label class='inline'>Last: <input type='text' name='lastname' value='".$row['last']."'></label>
@@ -60,6 +63,7 @@ if($result->num_rows > 0) {
 		<fieldset>
 			<legend>Delete User</legend>
 			<p><label>Username?  <input type="text" name="username"></label></p>
+			<p><label>UserID?  <input type="text" name="userid"></label></p>
 			<input type="submit">
 		</fieldset>
 	</form>
@@ -68,10 +72,12 @@ if($result->num_rows > 0) {
 		## TODO: Make this into a table instead of just printing it out. ##	
 		echo " - ";
 		echo "<strong>" .  $row['user']  . "</strong>, ";
+		echo $row['uid'] . ", ";
 		echo $row['first'] . ", ";
 		echo $row['last']  . ", ";
 		echo $row['email'] . ", ";
-		echo "<a href='select.php?" . $row['id'] ."'> | &#9;Modify User...</a>";
+		echo $row['disabled'] . ", ";
+		echo "<a href='select.php?" . $row['uid'] ."'> | &#9;Modify User...</a>";
 		echo "<br>";
 	
 		}

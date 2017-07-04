@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="site.css    ">
+	<link rel="stylesheet" type="text/css" href="site.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-	<h2>Deletion Results:</h2>
+	<h2>Disable Results:</h2>
 
 <?php
 require("dbconn.php");
 
+$_uid = $_POST['userid'];
 $_user = $_POST['username'];
+date_default_timezone_set("America/Los_Angeles");
+$_datetime = date('Y-m-d H:i:s');
+$_file = '_UsersChangeLog_';
+$_outstr = $_datetime . "," . $_user . ", " . $_uid . ", disabled\n";
 
-#
-# Change this to disable
-#
-$sql = "DELETE FROM Users WHERE user = '$_user';";
+file_put_contents($_file, $_outstr, FILE_APPEND);
+
+
+$sql = "UPDATE Users SET 
+	disabled=TRUE
+
+WHERE uid = '$_uid';";
 
 
 $result = $conn->query($sql);
 if ($result === TRUE) {
-	echo "Successfully deleted user: " . "<strong>" . $_user . "</strong>";
+	echo "Successfully modified user: " . "<strong>" . $_user . "</strong>";
 } else {
 	echo "ERROR: " . $conn->error;
 }
 
-
+echo "<script>
+alert('Successfully updated info.');
+window.location.href='select.php?" . $_user ."';
+</script>";
 
 ?>
 
@@ -34,3 +45,4 @@ if ($result === TRUE) {
 
 </body>
 </html>
+
