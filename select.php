@@ -35,16 +35,15 @@ $result = $conn->query($sql);
 if($result->num_rows > 0) {
 	echo "<h2>Search Results:</h2>";
 	echo "<hr>";
-	echo "<h5 class='small-margin'>$result->num_rows results found</h5>";
-	echo "<hr><br>";
 	
 	while($row = $result->fetch_assoc()) {
-		if($row['disabled'] == 1) {
-			#echo $row['user'] . " is disabled";
-			continue;
-		}
 
 		if($result->num_rows == 1) {
+			if($row['disabled'] == 1) {
+				echo "<strong><em>". $row['user'] . " is disabled!</strong></em>";
+			# Add a re-enable button
+			}
+
 			echo"
 <form action='modify.php' method='post'>
 	<fieldset>
@@ -69,6 +68,10 @@ if($result->num_rows > 0) {
 	</form>
 			';
 		} else {
+			if($row['disabled'] == 1) {
+				#echo $row['user'] . " is disabled";
+				continue;
+			}
 		## TODO: Make this into a table instead of just printing it out. ##	
 		echo " - ";
 		echo "<strong>" .  $row['user']  . "</strong>, ";

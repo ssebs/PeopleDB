@@ -36,7 +36,7 @@ if ($result === TRUE) {
 
 echo "<script>
 alert('Successfully updated info.');
-window.location.href='select.php?" . $_user ."';
+window.location.href='index.php';
 </script>";
 
 ?>
