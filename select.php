@@ -60,7 +60,7 @@ if($result->num_rows > 0) {
 			echo '
 	<form action="delete.php" method="post">
 		<fieldset>
-			<legend>Delete User</legend>
+			<legend>Disable User</legend>
 			<p><label>Username?  <input type="text" name="username"></label></p>
 			<p><label>UserID?  <input type="text" name="userid"></label></p>
 			<input type="submit">
