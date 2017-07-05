@@ -1,11 +1,14 @@
 ﻿$peoplecsv = Import-Csv C:\PeopleDB\users\people.csv
 
 foreach ($person in $peoplecsv) {
+    $uid = $person.uIDs
     $username = $person.User
     $first = $person.First
     $last = $person.Last
     $email = $person.Email
     $name = "$first $last"
+    $disabled = $person.Disabled
+    $enabled = 1-$disabled
 
     $user = Get-ADUser -LDAPFilter "(sAMAccountName=$username)" -Properties EmailAddress,DisplayName
 
@@ -25,7 +28,11 @@ foreach ($person in $peoplecsv) {
                        -GivenName $first `
                        -SamAccountName "$username" `
                        -UserPrincipalName "$email" `
+                       -Enabled $enabled `
                        -EmailAddress $email
+            if($enabled -eq 0) {
+                echo "$username has been disabled"
+            }   
         }
 
     }Else {
@@ -42,6 +49,7 @@ foreach ($person in $peoplecsv) {
                     -AccountPassword $passwd `
                     -Path "OU=ssebs Users,DC=ssebs,DC=net" `
                     -EmailAddress $email `
+                    -OtherAttributes @{'uid'=$uid}  `
                     -PassThru | Enable-ADAccount 
 
     }

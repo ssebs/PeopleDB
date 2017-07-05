@@ -37,7 +37,7 @@ db.close()
 with open('people.csv','wb') as csvfile:
 	writer = csv.writer(csvfile, delimiter=",", 
 		quotechar='|', quoting=csv.QUOTE_MINIMAL)
-	writer.writerow(['uIDs','First', 'Last', 'User', 'Email', 'Disabled?'])
+	writer.writerow(['uIDs','First', 'Last', 'User', 'Email', 'Disabled'])
 	for i in range(len(firsts)):
 		writer.writerow([uids[i],firsts[i], lasts[i], users[i], emails[i], disableds[i]])
 
