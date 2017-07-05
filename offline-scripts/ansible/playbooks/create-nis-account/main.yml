@@ -18,6 +18,17 @@
         group: users
         append: yes
       with_items: "{{ users }}"
+      when: "{{ item.disabled  }} == 0"
+
+    - name: "Disable Users from users.yml"
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        state: present
+        password: "*LK*"
+        update_password: always
+      with_items: "{{ users }}"
+      when: "{{ item.disabled  }} == 1"
 
     - name: "Make NIS passwd file"
       command: make 
