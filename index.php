@@ -29,6 +29,7 @@ h1 {
 		</fieldset>	
 	</form>
 	<p>Add checkbox for search disabled users</p>
+	<p>Add re-enable user</p>
 	<form action="create.php" method="post">
 		<fieldset>
 			<legend>Create User</legend>
