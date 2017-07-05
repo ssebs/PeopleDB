@@ -5,9 +5,9 @@
     - users.yml
   tasks:
     - name: "Create users from users.yml"
-# add uid from database, autoincrement feature in mysql, starting at ~7000 
       user:
         name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
         state: present
         comment: ""
         password: "$6$rounds=656000$x62DhqXy2cehUscT$iznGd2ZOU4jsTJN2U2vg9woc0KHnOqm6S5lJdDv11W6QYSvSy2mSRLHGbn6I1Upv8mXwaMQg9BYCQIlZRimoI1"
@@ -15,6 +15,7 @@
         createhome: yes
         home: "/home/nis/{{ item.name }}"
         groups: "{{ item.groups }}"
+        group: users
         append: yes
       with_items: "{{ users }}"
 

@@ -28,7 +28,7 @@ h1 {
 			<input type="submit">
 		</fieldset>	
 	</form>
-	
+	<p>Add checkbox for search disabled users</p>
 	<form action="create.php" method="post">
 		<fieldset>
 			<legend>Create User</legend>

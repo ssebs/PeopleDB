@@ -1,4 +1,14 @@
 ---
 - users:
    - name: msafari
+     uid: 7000
      groups: users
+     disabled: 0
+   - name: tuser
+     uid: 7001
+     groups: users
+     disabled: 0
+   - name: tuser2
+     uid: 7002
+     groups: users
+     disabled: 1
