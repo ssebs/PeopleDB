@@ -30,6 +30,7 @@ h1 {
 	</form>
 	<p>Add checkbox for search disabled users</p>
 	<p>Add re-enable user</p>
+	<p>Add AD pemissions to view/edit this db</p>
 	<form action="create.php" method="post">
 		<fieldset>
 			<legend>Create User</legend>
