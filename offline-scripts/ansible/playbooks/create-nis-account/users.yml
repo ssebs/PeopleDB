@@ -12,3 +12,7 @@
      uid: 7002
      groups: users
      disabled: 1
+   - name: tuser3
+     uid: 7003
+     groups: users
+     disabled: 0

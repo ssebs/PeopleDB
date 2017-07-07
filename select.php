@@ -39,11 +39,6 @@ if($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 
 		if($result->num_rows == 1) {
-			if($row['disabled'] == 1) {
-				echo "<strong><em>". $row['user'] . " is disabled!</strong></em>";
-			# Add a re-enable button
-			}
-
 			echo"
 <form action='modify.php' method='post'>
 	<fieldset>
@@ -68,19 +63,29 @@ if($result->num_rows > 0) {
 	</form>
 			';
 		} else {
-			if($row['disabled'] == 1) {
+			if($row['disabled'] == 1 && $_POST['disabled'] == "no") {
 				#echo $row['user'] . " is disabled";
 				continue;
 			}
 		## TODO: Make this into a table instead of just printing it out. ##	
+		if($row['disabled'] == 1) {
+			echo "<strong>DISABLED: </strong>";
+		}
 		echo " - ";
 		echo "<strong>" .  $row['user']  . "</strong>, ";
 		echo $row['uid'] . ", ";
 		echo $row['first'] . ", ";
 		echo $row['last']  . ", ";
 		echo $row['email'] . ", ";
-		echo $row['disabled'] . ", ";
-		echo "<a href='select.php?" . $row['uid'] ."'> | &#9;Modify User...</a>";
+		echo $row['disabled'] . " ";
+			if($row['disabled'] == 0) {
+				echo "<a href='select.php?" . $row['uid'] ."'> | &#9;Modify User...</a>";
+			} else {
+				echo '<form action="reenable.php" method="post" style="display:inline">';
+				echo "<input type='hidden' name='userid' value='" . $row['uid'] . "'>";
+				echo "<input type='hidden' name='username' value='" . $row['user'] . "'>";
+				echo "<input type='submit' value='Re-enable'>";
+			}
 		echo "<br>";
 	
 		}
