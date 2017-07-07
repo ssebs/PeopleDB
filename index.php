@@ -33,7 +33,7 @@ h1 {
 	<form action="create.php" method="post">
 		<fieldset>
 			<legend>Create User</legend>
-				
+			<p>TODO: Add userid suggestion form</p>	
 			<p><label>Username: <input type="text" name="username"> </label></p>
 			<p><label>First name: <input type="text" name="firstname"> </label></p>
 			<p><label>Last name: <input type="text" name="lastname"> </label></p>
