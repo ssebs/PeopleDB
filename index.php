@@ -31,6 +31,7 @@ h1 {
 		</fieldset>	
 	</form>
 	<p>Add AD pemissions to view/edit this db</p>
+	<p>Ansible to manage all of account creation/modification. Including running a powershell script to the DC.</p>
 	<form action="create.php" method="post">
 		<fieldset>
 			<legend>Create User</legend>
