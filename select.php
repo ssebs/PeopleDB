@@ -17,6 +17,11 @@
 <?php
 require("dbconn.php");
 
+if(@$_POST['disabled'] == NULL || $_POST['disabled'] == 'no') {
+	$showdisabled = 'no';
+} else {
+	$showdisabled = 'yes';
+}
 if(@$_POST['name'] == NULL) {
 	$_searchquery = $_SERVER['QUERY_STRING'];
 } else {
@@ -63,12 +68,11 @@ if($result->num_rows > 0) {
 	</form>
 			';
 		} else {
-			if($row['disabled'] == 1 && $_POST['disabled'] == "no") {
-				#echo $row['user'] . " is disabled";
+			if($row['disabled'] == 1 && $showdisabled == "no") {
 				continue;
 			}
 		## TODO: Make this into a table instead of just printing it out. ##	
-		if($row['disabled'] == 1) {
+		if($row['disabled'] == 1 && $showdisabled == "yes") {
 			echo "<strong>DISABLED: </strong>";
 		}
 		echo " - ";
@@ -80,7 +84,7 @@ if($result->num_rows > 0) {
 		echo $row['disabled'] . " ";
 			if($row['disabled'] == 0) {
 				echo "<a href='select.php?" . $row['uid'] ."'> | &#9;Modify User...</a>";
-			} else {
+			} else if ($showdisabled == "yes"){
 				echo '<form action="reenable.php" method="post" style="display:inline">';
 				echo "<input type='hidden' name='userid' value='" . $row['uid'] . "'>";
 				echo "<input type='hidden' name='username' value='" . $row['user'] . "'>";

@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<h2>Disable Results:</h2>
+	<h2>Re-enable Results:</h2>
 
 <?php
 require("dbconn.php");
@@ -29,14 +29,14 @@ WHERE uid = '$_uid';";
 
 $result = $conn->query($sql);
 if ($result === TRUE) {
-	echo "Successfully modified user: " . "<strong>" . $_user . "</strong>";
+	echo "Successfully re-enabled user: " . "<strong>" . $_user . "</strong>";
 } else {
 	echo "ERROR: " . $conn->error;
 }
 
 echo "<script>
-alert('Successfully updated info.');
-window.location.href='select.php?" . $_user ."';
+alert('Successfully re-enabled user.');
+window.location.href='select.php?" . $_uid ."';
 </script>";
 
 ?>

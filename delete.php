@@ -29,13 +29,13 @@ WHERE uid = '$_uid';";
 
 $result = $conn->query($sql);
 if ($result === TRUE) {
-	echo "Successfully modified user: " . "<strong>" . $_user . "</strong>";
+	echo "Successfully disabled user: " . "<strong>" . $_user . "</strong>";
 } else {
 	echo "ERROR: " . $conn->error;
 }
 
 echo "<script>
-alert('Successfully updated info.');
+alert('Successfully disabled user.');
 window.location.href='index.php';
 </script>";
 
