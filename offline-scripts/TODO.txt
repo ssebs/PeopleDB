@@ -1,4 +1,2 @@
 1) Fix database, add source control, revision history
-2) add searchable history for user, possibly as a "view history" on search page for specific user."
-3) add userID's that match with AD. 
-4) change delete to disable
+2) move eveything to ansible. Shell script should only run playbooks

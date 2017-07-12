@@ -18,7 +18,7 @@ function process {
 	fi
 
 	if [ -e users.yml ] ;then
-		cp users.yml /var/www/html/offline-scripts/ansible/playbooks/create-nis-account/users.yml
+		cp users.yml /var/www/html/offline-scripts/ansible/playbooks/users.yml
 		mv users.yml /mnt/PeopleDB/users/
 		echo "copied to /mnt/PeopleDB/users/"
 	else 
@@ -28,4 +28,4 @@ function process {
 ### Begin script ###
 python /var/www/html/offline-scripts/pysql.py
 process
-ansible-playbook /var/www/html/offline-scripts/ansible/playbooks/create-nis-account/main.yml -i /var/www/html/offline-scripts/ansible/hosts
+ansible-playbook /var/www/html/offline-scripts/ansible/playbooks/main.yml -i /var/www/html/offline-scripts/ansible/hosts
