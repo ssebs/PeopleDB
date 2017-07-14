@@ -16,7 +16,7 @@ $_user = $_POST['username'];
 date_default_timezone_set("America/Los_Angeles");
 $_datetime = date('Y-m-d H:i:s');
 $_file = '_UsersChangeLog_';
-$_outstr = $_datetime . "," . $_user . ", " . $_uid . ", disabled\n";
+$_outstr = $_datetime . "," . $_user . ", " . $_uid . ", re-enabled\n";
 
 file_put_contents($_file, $_outstr, FILE_APPEND);
 

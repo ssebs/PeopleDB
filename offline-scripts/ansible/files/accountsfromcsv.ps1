@@ -16,9 +16,10 @@ foreach ($person in $peoplecsv) {
         echo "User: $username alreaady created."
 
         If($user.Surname -eq $last -and $user.GivenName -eq $first -and $user.EmailAddress `
-            -eq $email -and $user.DisplayName -eq $name) 
+            -eq $email -and $user.DisplayName -eq $name -and $user.Enabled -eq $enabled) 
         {
             echo " "
+            #Get-ADUser -Identity $user
         }Else 
         {
             echo "Updating user: $username"

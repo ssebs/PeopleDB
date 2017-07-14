@@ -2,7 +2,7 @@
 - hosts: nis-servers
   become: yes
   vars_files:
-    - users.yml
+    - ../files/users.yml
   tasks:
     - name: "Create users from users.yml"
       user:
@@ -17,6 +17,16 @@
         groups: "{{ item.groups }}"
         group: users
         append: yes
+      with_items: "{{ users }}"
+      when: "{{ item.disabled  }} == 0"
+
+    - name: "Enable Users from users.yml"
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        state: present
+        password: "$6$rounds=656000$x62DhqXy2cehUscT$iznGd2ZOU4jsTJN2U2vg9woc0KHnOqm6S5lJdDv11W6QYSvSy2mSRLHGbn6I1Upv8mXwaMQg9BYCQIlZRimoI1"
+        update_password: always
       with_items: "{{ users }}"
       when: "{{ item.disabled  }} == 0"
 

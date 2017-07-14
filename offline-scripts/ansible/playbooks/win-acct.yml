@@ -1,0 +1,16 @@
+---
+- hosts: windows
+  tasks:
+    - name: "Copy people.csv"
+      win_copy:
+        src: ../files/people.csv
+        dest: C:\PeopleDB\users\people.csv
+    
+    - name: "Copy accountsfromcsv.ps1"
+      win_copy:
+        src: ../files/accountsfromcsv.ps1"
+        dest: C:\PeopleDB\accountsfromcsv.ps1"
+    
+    - name: "Run accountsfromcsv.ps1"
+      win_shell: C:\PeopleDB\accountsfromcsv.ps1 
+

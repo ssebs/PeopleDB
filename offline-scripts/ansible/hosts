@@ -8,3 +8,6 @@ ssebs-nis
 [nis-clients]
 ssebs-nc
 
+
+[windows]
+ssebs-dc.ssebs.net

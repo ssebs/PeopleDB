@@ -1,2 +1,0 @@
-1) Fix database, add source control, revision history
-2) move eveything to ansible. Shell script should only run playbooks
