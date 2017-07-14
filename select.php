@@ -44,7 +44,10 @@ if($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 
 		if($result->num_rows == 1) {
-			echo"
+			if($row['disabled'] == 1) {
+				echo "User is DISABLED";
+			}
+		echo "
 <form action='modify.php' method='post'>
 	<fieldset>
 		<legend>User: " . $row['user'] .  " (uid: ".$row['uid'].")</legend>
