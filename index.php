@@ -24,7 +24,7 @@ h1 {
 </head>
 <body>
 	<h1>People DB</h1>
-	<p>Simon was here</p>
+	<p>Simon was here, five minutes ago</p>
 	<p class="text-center">Search, Create, Modify, and Disable Users.</p>
 
 	<form action="select.php" method="post">
