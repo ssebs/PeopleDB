@@ -16,7 +16,6 @@ file_put_contents($_file, $_outstr, FILE_APPEND);
 
 
 $sql = "UPDATE Users SET 
-	user='$_user',
 	first='$_first',
 	last='$_last',
 	email='$_email'

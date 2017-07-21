@@ -11,19 +11,20 @@
 <?php
 require("dbconn.php");
 
-$_first = $_POST['firstname'];
-$_last = $_POST['lastname'];
-$_user = $_POST['username'];
-$_email = $_POST['email'];
+$_first = $_GET['firstname'];
+$_last = $_GET['lastname'];
+$_user = $_GET['username'];
+$_email = $_GET['email'];
+$_uid = $_GET['userid'];
 
-if ($_user == "") {
+if ($_user == "" || $_uid == "") {
 	echo "<script>
 alert('User not created! Enter in the needed info!');
 window.location.href='index.php';
 </script>";
 	
 } else {
-	$sql = "INSERT INTO Users(first, last, user, email, disabled) VALUES('$_first','$_last','$_user','$_email', FALSE);";
+	$sql = "INSERT INTO Users VALUES($_uid,'$_first','$_last','$_user','$_email', TRUE);";
 	
 	$result = $conn->query($sql);
 	if ($result === TRUE) {
@@ -35,12 +36,13 @@ window.location.href='index.php';
 		date_default_timezone_set("America/Los_Angeles");
 		$_datetime = date('Y-m-d H:i:s');
 		$_file = '_UsersChangeLog_';
-		$_outstr = $_datetime . "," . $_id . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
+		$_outstr = $_datetime . "," . $_uid . "," . $_user . "," . $_first . "," . $_last . "," . $_email . "\n";
 		
 		file_put_contents($_file, $_outstr, FILE_APPEND);
 
 	} else {
 		echo "ERROR: " . $conn->error;
+		echo "<br>" . $sql;
 	}
 	
 }

@@ -17,7 +17,7 @@
 <?php
 require("dbconn.php");
 
-if(@$_POST['disabled'] == NULL || $_POST['disabled'] == 'no') {
+if(@$_POST['enabled'] == NULL || $_POST['enabled'] == 'no') {
 	$showdisabled = 'no';
 } else {
 	$showdisabled = 'yes';
@@ -44,7 +44,7 @@ if($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 
 		if($result->num_rows == 1) {
-			if($row['disabled'] == 1) {
+			if($row['enabled'] == 0) {
 				echo "User is DISABLED";
 			}
 		echo "
@@ -71,11 +71,11 @@ if($result->num_rows > 0) {
 	</form>
 			';
 		} else {
-			if($row['disabled'] == 1 && $showdisabled == "no") {
+			if($row['enabled'] == 0 && $showdisabled == "no") {
 				continue;
 			}
 		## TODO: Make this into a table instead of just printing it out. ##	
-		if($row['disabled'] == 1 && $showdisabled == "yes") {
+		if($row['enabled'] == 0 && $showdisabled == "yes") {
 			echo "<strong>DISABLED: </strong>";
 		}
 		echo " - ";
@@ -84,8 +84,8 @@ if($result->num_rows > 0) {
 		echo $row['first'] . ", ";
 		echo $row['last']  . ", ";
 		echo $row['email'] . ", ";
-		echo $row['disabled'] . " ";
-			if($row['disabled'] == 0) {
+		echo $row['enabled'] . " ";
+			if($row['enabled'] == 1) {
 				echo "<a href='select.php?" . $row['uid'] ."'> | &#9;Modify User...</a>";
 			} else if ($showdisabled == "yes"){
 				echo '<form action="reenable.php" method="post" style="display:inline">';
