@@ -11,11 +11,12 @@ MariaDB [People]> create table Users(uid INT NOT NULL, first varchar(30), last V
 
 
 MariaDB [People]> select * from Users;
-+------+-------+-------+--------+------------------+---------+
-| uid  | first | last  | user   | email            | enabled |
-+------+-------+-------+--------+------------------+---------+
-| 1001 | Test  | User  | tuser  | tuser@ssebs.net  |       1 |
-| 1002 | Test  | User2 | tuser2 | tuser2@ssebs.net |       1 |
-| 1003 | Test  | User3 | tuser3 | tuser3@ssebs.net |       0 |
-+------+-------+-------+--------+------------------+---------+
+
+    +------+-------+-------+--------+------------------+---------+
+    | uid  | first | last  | user   | email            | enabled |
+    +------+-------+-------+--------+------------------+---------+
+    | 1001 | Test  | User  | tuser  | tuser@ssebs.net  |       1 |
+    | 1002 | Test  | User2 | tuser2 | tuser2@ssebs.net |       1 |
+    | 1003 | Test  | User3 | tuser3 | tuser3@ssebs.net |       0 |
+    +------+-------+-------+--------+------------------+---------+
 
