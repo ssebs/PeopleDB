@@ -22,7 +22,7 @@ file_put_contents($_file, $_outstr, FILE_APPEND);
 
 
 $sql = "UPDATE Users SET 
-	disabled=TRUE
+	enabled=FALSE
 
 WHERE uid = '$_uid';";
 

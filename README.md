@@ -7,12 +7,15 @@ Plans for future:
 
 **Mysql database should look like below**
 
-MariaDB [People]> SELECT * FROM Users;
+MariaDB [People]> create table Users(uid INT NOT NULL, first varchar(30), last VARCHAR(30), user VARCHAR(30), email VARCHAR(30), enabled BOOL);
 
-    +------+-------+--------+---------+-------------------+----------+
-    | uid  | first | last   | user    | email             | disabled |
-    +------+-------+--------+---------+-------------------+----------+
-    | 7000 | Matt  | Safari | msafari | msafari@ssebs.net |        0 |
-    +------+-------+--------+---------+-------------------+----------+
 
+MariaDB [People]> select * from Users;
++------+-------+-------+--------+------------------+---------+
+| uid  | first | last  | user   | email            | enabled |
++------+-------+-------+--------+------------------+---------+
+| 1001 | Test  | User  | tuser  | tuser@ssebs.net  |       1 |
+| 1002 | Test  | User2 | tuser2 | tuser2@ssebs.net |       1 |
+| 1003 | Test  | User3 | tuser3 | tuser3@ssebs.net |       0 |
++------+-------+-------+--------+------------------+---------+
 

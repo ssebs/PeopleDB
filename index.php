@@ -24,7 +24,6 @@ h1 {
 </head>
 <body>
 	<h1>People DB</h1>
-	<p>Simon was here, five minutes ago</p>
 	<p class="text-center">Search, Create, Modify, and Disable Users.</p>
 
 	<form action="select.php" method="post">
@@ -32,15 +31,16 @@ h1 {
 			<legend>Search User</legend>
 			<p><label>Name? <input type="text" name="name"></label></p>
 			<input type="hidden" name='disabled' value="no">
-			<p><label><input type="checkbox" name='disabled' value='yes'> Include Disabled Users?</label></p>
+			<p><label><input type="checkbox" name='enabled' value='yes'> Include Disabled Users?</label></p>
 			<input type="submit">
 		</fieldset>	
 	</form>
 	<p>Add AD pemissions to view/edit this db</p>
-	<form action="create.php" method="post">
+	<form action="create.php" method="get">
 		<fieldset>
 			<legend>Create User</legend>
 			<p>TODO: Add userid suggestion form</p>	
+			<p><label>*nix User ID: <input type="text" name="userid"> </label></p>
 			<p><label>Username: <input type="text" name="username"> </label></p>
 			<p><label>First name: <input type="text" name="firstname"> </label></p>
 			<p><label>Last name: <input type="text" name="lastname"> </label></p>
