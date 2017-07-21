@@ -5,6 +5,7 @@ AD/NIS/Web user management. Web UI running on LAMP server will create/modify/dis
 Plans for future:
 1) Clean UI/Fix UX
 
+
 **Mysql database should look like below**
 
 MariaDB [People]> create table Users(uid INT NOT NULL, first varchar(30), last VARCHAR(30), user VARCHAR(30), email VARCHAR(30), enabled BOOL);
@@ -20,3 +21,4 @@ MariaDB [People]> select * from Users;
     | 1003 | Test  | User3 | tuser3 | tuser3@ssebs.net |       0 |
     +------+-------+-------+--------+------------------+---------+
 
+![screenshot of current implementation](http://i.imgur.com/sOihcqO.png)
