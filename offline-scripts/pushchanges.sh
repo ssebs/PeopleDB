@@ -10,7 +10,7 @@ function process {
 
 	if [ -e /var/www/html/offline-scripts/users.yml ] ;then
 		mv /var/www/html/offline-scripts/users.yml /var/www/html/offline-scripts/ansible/files/
-		echo "copied to /var/www/html/offline-scripts/ansible/files/people.csv"
+		echo "copied to /var/www/html/offline-scripts/ansible/files/users.yml"
 	else 
 		echo "users.yml not found."
 	fi
